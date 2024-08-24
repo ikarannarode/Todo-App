@@ -5,12 +5,14 @@ import taskRoutes from "./routes/task.routes.js"
 import cookieParser from "cookie-parser";
 import { errorMiddleware } from "./middlewares/user.error.js";
 import cors from 'cors';
+
 config({ path: "./config/.env" })
 
 export const app = express()
 
 app.use(express.json())
 app.use(cookieParser())
+
 app.use(cors(
     {
         origin: [process.env.FRONTEND_URI],
@@ -18,6 +20,7 @@ app.use(cors(
         credential: true,
     }
 ));
+
 //Using Error Middlewares
 app.use(errorMiddleware)
 

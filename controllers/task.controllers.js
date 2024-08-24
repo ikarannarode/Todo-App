@@ -4,7 +4,8 @@ import { Task } from "../models/task.model.js";
 export const newTask = async (req, res, next) => {
     try {
         const { title, description } = req.body;
-
+        const head = await Task.findOne({ title });
+        if (head.title === title && head.description === description || head.title === title) return res.status(400).json({ success: false, message: "Existing task can not be added" });
         await Task.create({
             title,
             description,
