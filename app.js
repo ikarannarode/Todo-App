@@ -28,5 +28,7 @@ app.use(errorMiddleware)
 // Routes
 app.use("/api/v1/user", userRoutes)
 app.use("/api/v1/task", taskRoutes)
-
+app.get("/", (req, res) => {
+    res.send("Server is working")
+})
 
